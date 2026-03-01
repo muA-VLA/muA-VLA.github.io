@@ -103,7 +103,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body has-text-centered">
-        <img src="static/images/teaser.png" alt="µA-VLA teaser" style="max-width:100%; height:auto;" />
+        <img src="static/images/mini_overview.png" alt="µA-VLA teaser" style="max-width:100%; height:auto;" />
       </div>
     </div>
   </section>
@@ -114,36 +114,8 @@
       <h2 class="title is-3 has-text-centered">Abstract</h2>
       <div class="content has-text-justified">
         <p>
-          <!-- Replace with your abstract -->
-          Recent advances in vision-language
-              action (VLA) models have substantially improved
-              robotic manipulation, yet they remain brittle in long
-              horizon, multi-step tasks where errors accumulate
-              through chained execution, often leading to deadlocks
-              and premature termination. To address this limita
-              tion, we propose µA-VLA, a multi-agent online self
-              healing framework for long-horizon robotic manipu
-              lation, which leverages π0.5 as the execution backbone
-              and instantiates all agents with Claude Opus 4.6.
-              µA-VLA organizes three collaborative agents into a
-              reasoning–coding–intervention loop. The Vision Fail
-              ure Reasoning Agent analyzes failure visual observa
-              tions and records the key causes in Failure Analysis
-              Records. The Code Synthesis Agent then combines
-              these records with the Failure-Type Solution Library
-              and the Task Success Rates Records to dynamically
-              synthesize runnable code. This code instantiates a
-              downstream Task-Specific Intervention Agent, which
-              produces intervention instructions to guide the under
-              lying VLA policy and reliably advance task progress.
-              Execution outcomes are written back to the relevant
-              records, enabling continual iteration and improve
-              ment. Extensive evaluations demonstrate that µA
-              VLA achieves new state-of-the-art performance on
-              the CALVIN ABC→D benchmark, reaching an aver
-              age sequence length of 4.76 with a 90.1% success rate,
-              alongside robust real-world physical deployments.
-        </p>
+  Recent advances in vision-language-action (VLA) models have improved robotic manipulation, yet they remain brittle in long-horizon, multi-step execution where errors accumulate and lead to deadlocks or premature termination. We introduce <b>µA-VLA</b>, a multi-agent online self-healing framework that couples failure reasoning from <i>failure visual observations</i> with dynamic, code-driven task intervention in a <i>reasoning–coding–intervention</i> loop. Built on top of <b>π<sub>0.5</sub></b> as the execution backbone and instantiating all agents with <b>Claude Opus 4.6</b>, µA-VLA diagnoses execution anomalies, synthesizes runnable recovery code, and performs targeted online interventions to resume and sustain task progress. Extensive evaluations show that µA-VLA achieves new state-of-the-art performance on the CALVIN ABC→D benchmark, reaching an <i>Avg. Len.</i> of <b>4.76</b> with <b>90.1%</b> 5-step success, alongside robust real-world long-horizon deployments.
+</p>
       </div>
     </div>
   </section>
@@ -153,13 +125,13 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Method</h2>
       <div class="content has-text-centered">
-        <img src="static/images/method.png" alt="µA-VLA method overview" style="max-width:100%; height:auto;" />
+        <img src="static/images/overview.png" alt="µA-VLA method overview" style="max-width:100%; height:auto;" />
       </div>
       <div class="content has-text-justified">
         <p>
-          <!-- Replace with 2-4 sentences -->
-          µA-VLA forms a closed loop that turns failure analysis into executable online interventions. The framework maintains a structured
-          record of failure causes and synthesizes runnable recovery code to guide the underlying VLA policy during execution.
+
+  µA-VLA augments a fixed VLA controller with an online self-healing loop. Given the task instruction, subtask context, and failure visual observations, the framework produces a structured failure analysis record that captures the key symptom, relevant constraints, and plausible physical cause. It then synthesizes executable Python code to instantiate a task-specific intervention agent, which generates intervention instructions and invokes the underlying VLA tools to adjust the environment or execution order. The execution outcome is written back to the records, enabling continual refinement of recovery strategies across long-horizon rollouts.
+
         </p>
       </div>
     </div>
@@ -170,14 +142,67 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Results</h2>
       <div class="content has-text-centered">
-        <img src="static/images/results.png" alt="µA-VLA results" style="max-width:100%; height:auto;" />
+        <img src="static/images/sota.jpg" alt="µA-VLA results" style="max-width:100%; height:auto;" />
       </div>
       <div class="content has-text-justified">
-        <p>
-          <!-- Replace with your key numbers -->
-          On CALVIN ABC→D, µA-VLA achieves state-of-the-art performance with an Avg. Len. of 4.76 and 90.1% 5-step success, and shows
-          robust long-horizon deployment in real-world experiments.
-        </p>
+<p>
+  <b>Main benchmark results.</b> On CALVIN ABC→D, µA-VLA sets a new state of the art across long-horizon metrics, achieving an <i>Avg. Len.</i> of <b>4.76</b> and <b>90.1%</b> 5-step success. Compared with strong recent baselines, the gains are most pronounced at longer horizons, indicating that µA-VLA effectively mitigates error accumulation during chained execution.
+</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <div class="content has-text-centered">
+        <img src="static/images/before_after_barh.png" alt="µA-VLA results" style="max-width:100%; height:auto;" />
+      </div>
+      <div class="content has-text-justified">
+<p>
+  <b>Per-subtask improvements.</b> We further analyze performance at the subtask level. µA-VLA consistently increases success rates on representative subtasks, especially those that frequently fail due to missing preconditions, occlusions, or unstable interactions. These improvements reflect the benefit of converting failure understanding into targeted online interventions.
+</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <div class="content has-text-centered">
+        <img src="static/images/agent configuration.jpg" alt="µA-VLA results" style="max-width:100%; height:auto;" />
+      </div>
+      <div class="content has-text-justified">
+<p>
+  <b>Agent configuration study.</b> We evaluate different agent configurations by varying the underlying LLM/VLM choices. While stronger core models yield higher performance, µA-VLA remains consistently strong across configurations. Notably, even the weakest configuration achieves an <i>Avg. Len.</i> exceeding the prior SoTA (FLOWER: 4.53), demonstrating the robustness of the proposed closed-loop collaboration.
+</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <div class="content has-text-centered">
+        <img src="static/images/real_experinmnets.png" alt="µA-VLA results" style="max-width:100%; height:auto;" />
+      </div>
+      <div class="content has-text-justified">
+<p>
+  <b>Real-world long-horizon deployment.</b> We validate µA-VLA on real-robot long-horizon tasks with varied sequence lengths and orderings. µA-VLA reliably recovers from execution anomalies and continues task progress, showing strong deployability beyond simulation under practical sensory noise and physical uncertainties.
+</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <div class="content has-text-centered">
+        <img src="static/images/task_seqeunce.jpg" alt="µA-VLA results" style="max-width:100%; height:auto;" />
+      </div>
+      <div class="content has-text-justified">
+<p>
+  <b>Sequence-level analysis.</b> We test long-horizon subtask sequences of length 3–5. In challenging sequences where the backbone policy can deadlock due to unmet preconditions, µA-VLA diagnoses the bottleneck and inserts corrective actions online to complete the full sequence. In contrast, for well-conditioned sequences where preconditions are naturally satisfied by the ordering, the backbone succeeds without intervention, highlighting when online recovery is most beneficial.
+</p>
       </div>
     </div>
   </section>
