@@ -115,9 +115,34 @@
       <div class="content has-text-justified">
         <p>
           <!-- Replace with your abstract -->
-          We introduce µA-VLA, a multi-agent online self-healing framework for long-horizon robotic manipulation. µA-VLA couples
-          failure reasoning grounded in failure visual observations with dynamic, code-driven task intervention in a reasoning–coding–intervention
-          loop, enabling recovery from execution errors and continued task progress.
+          Recent advances in vision-language
+              action (VLA) models have substantially improved
+              robotic manipulation, yet they remain brittle in long
+              horizon, multi-step tasks where errors accumulate
+              through chained execution, often leading to deadlocks
+              and premature termination. To address this limita
+              tion, we propose µA-VLA, a multi-agent online self
+              healing framework for long-horizon robotic manipu
+              lation, which leverages π0.5 as the execution backbone
+              and instantiates all agents with Claude Opus 4.6.
+              µA-VLA organizes three collaborative agents into a
+              reasoning–coding–intervention loop. The Vision Fail
+              ure Reasoning Agent analyzes failure visual observa
+              tions and records the key causes in Failure Analysis
+              Records. The Code Synthesis Agent then combines
+              these records with the Failure-Type Solution Library
+              and the Task Success Rates Records to dynamically
+              synthesize runnable code. This code instantiates a
+              downstream Task-Specific Intervention Agent, which
+              produces intervention instructions to guide the under
+              lying VLA policy and reliably advance task progress.
+              Execution outcomes are written back to the relevant
+              records, enabling continual iteration and improve
+              ment. Extensive evaluations demonstrate that µA
+              VLA achieves new state-of-the-art performance on
+              the CALVIN ABC→D benchmark, reaching an aver
+              age sequence length of 4.76 with a 90.1% success rate,
+              alongside robust real-world physical deployments.
         </p>
       </div>
     </div>
