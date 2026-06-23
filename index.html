@@ -1,230 +1,313 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>µA-VLA: A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation</title>
-  <meta name="description" content="µA-VLA: A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation">
-  <meta name="keywords" content="µA-VLA, VLA, long-horizon manipulation, multi-agent, recovery">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>&micro;A-VLA: A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation</title>
+  <meta name="description" content="&micro;A-VLA is a multi-agent online self-healing framework that converts visual failure reasoning into executable interventions for long-horizon robotic manipulation.">
+  <meta name="keywords" content="&micro;A-VLA, VLA, robot manipulation, long-horizon manipulation, online recovery, multi-agent systems, IROS">
+  <meta name="theme-color" content="#f7f3ea">
 
-  <!-- OpenGraph / Twitter (optional but nice for sharing) -->
-  <meta property="og:title" content="µA-VLA: A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation">
+  <meta property="og:title" content="&micro;A-VLA">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="µA-VLA">
-  <meta property="og:image" content="https://muA-VLA.github.io/static/images/teaser.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:url" content="https://muA-VLA.github.io/">
-  <meta property="og:description" content="µA-VLA: A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation">
+  <meta property="og:site_name" content="&micro;A-VLA">
+  <meta property="og:url" content="https://mua-vla.github.io/">
+  <meta property="og:image" content="https://mua-vla.github.io/static/images/mini_overview.png">
+  <meta property="og:description" content="A multi-agent online self-healing framework for long-horizon robotic manipulation.">
 
-  <meta name="twitter:title" content="µA-VLA">
-  <meta name="twitter:description" content="µA-VLA: A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation">
-  <meta name="twitter:image" content="https://muA-VLA.github.io/static/images/teaser.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="&micro;A-VLA">
+  <meta name="twitter:description" content="A multi-agent online self-healing framework for long-horizon robotic manipulation.">
+  <meta name="twitter:image" content="https://mua-vla.github.io/static/images/mini_overview.png">
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/icon.png">
-
   <script defer src="./static/js/fontawesome.all.min.js"></script>
 </head>
 
 <body>
-  <!-- Title / Authors / Links -->
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">
-              µA-VLA:<br>
-              <span style="font-size:2.2rem;">A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation</span>
-            </h1>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="#top">&micro;A-VLA</a>
+    <div class="nav-links">
+      <a href="#abstract">Abstract</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#real-world">Real World</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </nav>
 
-            <!-- Authors (edit this block) -->
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">Ziheng Liu<sup>1</sup>,</span>
-              <span class="author-block">You Wang<sup>2</sup>,</span>
-              <span class="author-block">Jun Fu<sup>1</sup></span>
-            </div>
+  <header class="paper-hero" id="top">
+    <div class="hero-backdrop" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="venue-label">IROS 2026 Project Page</p>
+      <h1>&micro;A-VLA: A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation</h1>
+      <p class="hero-subtitle">
+        A closed-loop reasoning, coding, and intervention framework that helps VLA policies recover from cascading failures during long-horizon manipulation.
+      </p>
 
-            <!-- Affiliations (edit this block) -->
-            <div class="is-size-6 publication-authors">
-              <span class="author-block"><sup>1</sup>Zhejiang Gongshang University</span>&nbsp;&nbsp;
-              <span class="author-block"><sup>2</sup>Luoteng Technology (Hangzhou) Co., Ltd. &amp; Zhejiang University</span>
-            </div>
+      <div class="author-line">
+        <span>Ziheng Liu<sup>1</sup></span>
+        <span>You Wang<sup>2</sup></span>
+        <span>Cong Wang<sup>2</sup></span>
+        <span>Jun Fu<sup>1,*</sup></span>
+      </div>
 
-            <!-- Buttons (edit href links) -->
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <span class="link-block">
-                  <a href="YOUR_PAPER_LINK" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Paper</span>
-                  </a>
-                </span>
+      <p class="affiliation-line">
+        <sup>1</sup>Zhejiang Gongshang University &middot; <sup>2</sup>Luoteng Technology (Hangzhou) Co., Ltd. &amp; Zhejiang University
+      </p>
 
-                <span class="link-block">
-                  <a href="YOUR_CODE_LINK" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Code</span>
-                  </a>
-                </span>
+      <div class="hero-actions" aria-label="Project links">
+        <a class="action-button primary" href="#citation">
+          <span class="icon"><i class="fas fa-quote-right"></i></span>
+          <span>Citation</span>
+        </a>
+        <a class="action-button" href="#method">
+          <span class="icon"><i class="fas fa-project-diagram"></i></span>
+          <span>Method</span>
+        </a>
+        <span class="action-button muted" aria-disabled="true">
+          <span class="icon"><i class="fas fa-file-pdf"></i></span>
+          <span>Paper PDF &middot; Coming Soon</span>
+        </span>
+      </div>
 
-                <!-- Optional: Video -->
-                <span class="link-block">
-                  <a href="YOUR_VIDEO_LINK" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fab fa-youtube"></i></span>
-                    <span>Video</span>
-                  </a>
-                </span>
-
-                <!-- Optional: Project/Models -->
-                <!--
-                <span class="link-block">
-                  <a href="YOUR_MODELS_LINK" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="ai ai-arxiv"></i></span>
-                    <span>Models</span>
-                  </a>
-                </span>
-                -->
-              </div>
-            </div>
-
-          </div>
+      <div class="hero-facts" aria-label="Key facts">
+        <div>
+          <span class="fact-value">4.76</span>
+          <span class="fact-label">Average sequence length</span>
+        </div>
+        <div>
+          <span class="fact-value">90.1%</span>
+          <span class="fact-label">CALVIN 5-step success</span>
+        </div>
+        <div>
+          <span class="fact-value">3</span>
+          <span class="fact-label">Collaborative recovery agents</span>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Teaser (use ONE image) -->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Overview</h2>
-      <div class="hero-body has-text-centered">
-        <img src="static/images/mini_overview.png" alt="µA-VLA overview" style="max-width:100%; height:auto;" />
-      </div>
-    </div>
-  </section>
+  <main>
+    <section class="section-band summary-band">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">At a glance</p>
+          <h2>Online self-healing for long-horizon manipulation</h2>
+          <p>
+            &micro;A-VLA augments a fixed VLA controller with a feedback loop that diagnoses visual failures, synthesizes recovery code, and issues task-specific interventions while execution is still unfolding.
+          </p>
+        </div>
 
-  <!-- Abstract -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Abstract</h2>
-      <div class="content has-text-justified">
-        <p>
-  Recent advances in vision-language-action (VLA) models have improved robotic manipulation, yet they remain brittle in long-horizon, multi-step execution where errors accumulate and lead to deadlocks or premature termination. We introduce <b>µA-VLA</b>, a multi-agent online self-healing framework that couples failure reasoning from <i>failure visual observations</i> with dynamic, code-driven task intervention in a <i>reasoning–coding–intervention</i> loop. Built on top of <b>π<sub>0.5</sub></b> as the execution backbone and instantiating all agents with <b>Claude Opus 4.6</b>, µA-VLA diagnoses execution anomalies, synthesizes runnable recovery code, and performs targeted online interventions to resume and sustain task progress. Extensive evaluations show that µA-VLA achieves new state-of-the-art performance on the CALVIN ABC→D benchmark, reaching an <i>Avg. Len.</i> of <b>4.76</b> with <b>90.1%</b> 5-step success, alongside robust real-world long-horizon deployments.
-</p>
+        <div class="summary-grid">
+          <article>
+            <span>01</span>
+            <h3>Failure-grounded reasoning</h3>
+            <p>The Vision Failure Reasoning Agent turns task context and failure visual observations into structured failure analysis records.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Executable intervention logic</h3>
+            <p>The Code Synthesis Agent uses failure records and solution libraries to generate runnable recovery code on demand.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Task-specific recovery</h3>
+            <p>The downstream intervention agent guides the underlying VLA policy to remove bottlenecks and continue task progress.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Method -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Framework of μA-VLA</h2>
-      <div class="content has-text-centered">
-        <img src="static/images/overview.png" alt="µA-VLA method Framework" style="max-width:100%; height:auto;" />
+    <section class="section-band" id="abstract">
+      <div class="section-inner narrow">
+        <div class="section-heading centered">
+          <p class="eyebrow">Abstract</p>
+          <h2>From brittle chained execution to recoverable long-horizon behavior</h2>
+        </div>
+        <div class="abstract-copy">
+          <p>
+            Recent advances in vision-language-action (VLA) models have substantially improved robotic manipulation, yet they remain brittle in long-horizon, multi-step tasks where errors accumulate through chained execution, often leading to deadlocks and premature termination.
+          </p>
+          <p>
+            To address this limitation, we propose &micro;A-VLA, a multi-agent online self-healing framework for long-horizon robotic manipulation. &micro;A-VLA organizes three collaborative agents into a reasoning-coding-intervention pipeline. The Vision Failure Reasoning Agent analyzes failure visual observations and records the key causes in Failure Analysis Records. The Code Synthesis Agent combines these records with the Failure-Type Solution Library and the Task Success Rates Records to dynamically synthesize runnable code. This code instantiates a downstream Task-Specific Intervention Agent, which produces intervention instructions to guide the underlying VLA policy and reliably advance task progress.
+          </p>
+          <p>
+            Extensive evaluations demonstrate that &micro;A-VLA, which leverages &pi;<sub>0.5</sub> as the execution backbone, achieves new state-of-the-art performance on the CALVIN ABC&rarr;D benchmark, reaching an average sequence length of 4.76 with a 90.1% success rate, alongside robust real-world physical deployments.
+          </p>
+        </div>
       </div>
-      <div class="content has-text-justified">
-        <p>
+    </section>
 
-  µA-VLA augments a fixed VLA controller with an online self-healing loop. Given the task instruction, subtask context, and failure visual observations, the framework produces a structured failure analysis record that captures the key symptom, relevant constraints, and plausible physical cause. It then synthesizes executable Python code to instantiate a task-specific intervention agent, which generates intervention instructions and invokes the underlying VLA tools to adjust the environment or execution order. The execution outcome is written back to the records, enabling continual refinement of recovery strategies across long-horizon rollouts.
+    <section class="section-band figure-band" id="method">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Framework</p>
+          <h2>A reasoning-coding-intervention loop</h2>
+          <p>
+            The framework starts from the task instruction, previous subtask context, and failure visual observation. It then links failure diagnosis, code synthesis, and intervention execution into a closed loop.
+          </p>
+        </div>
 
-        </p>
-      </div>
-    </div>
-  </section>
+        <figure class="paper-figure wide">
+          <img src="./static/images/overview.png" alt="Framework of muA-VLA showing failure reasoning, code synthesis, task-specific intervention, and feedback records.">
+          <figcaption>
+            Failure observations are analyzed into records, transformed into runnable intervention logic, and fed back through execution outcomes for later recovery decisions.
+          </figcaption>
+        </figure>
 
-  <!-- Results -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Simulation Main Results</h2>
-      <div class="content has-text-centered">
-        <img src="static/images/sota.jpg" alt="µA-VLA results" style="max-width:100%; height:auto;" />
+        <div class="pipeline-grid">
+          <article>
+            <span>Reason</span>
+            <h3>Vision Failure Reasoning Agent</h3>
+            <p>Infers root causes from visual observations, task context, and previous subtask state.</p>
+          </article>
+          <article>
+            <span>Code</span>
+            <h3>Code Synthesis Agent</h3>
+            <p>Combines failure records with reusable solution knowledge to synthesize executable intervention code.</p>
+          </article>
+          <article>
+            <span>Intervene</span>
+            <h3>Task-Specific Intervention Agent</h3>
+            <p>Issues corrective instructions to the underlying VLA controller and writes execution outcomes back to memory.</p>
+          </article>
+        </div>
       </div>
-      <div class="content has-text-justified">
-<p>
-  <b>Main benchmark results.</b> On CALVIN ABC→D, µA-VLA sets a new state of the art across long-horizon metrics, achieving an <i>Avg. Len.</i> of <b>4.76</b> and <b>90.1%</b> 5-step success. Compared with strong recent baselines, the gains are most pronounced at longer horizons, indicating that µA-VLA effectively mitigates error accumulation during chained execution.
-</p>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Subtask Analysis.</h2>
-      <div class="content has-text-centered">
-        <img src="static/images/before_after_barh.png" alt="µA-VLA results" style="max-width:100%; height:auto;" />
-      </div>
-      <div class="content has-text-justified">
-<p>
-  <b>Per-subtask improvements.</b> We further analyze performance at the subtask level. µA-VLA consistently increases success rates on representative subtasks, especially those that frequently fail due to missing preconditions, occlusions, or unstable interactions. These improvements reflect the benefit of converting failure understanding into targeted online interventions.
-</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Agent Configurations.</h2>
-      <div class="content has-text-centered">
-        <img src="static/images/agent configuration.jpg" alt="µA-VLA results" style="max-width:100%; height:auto;" />
-      </div>
-      <div class="content has-text-justified">
-<p>
-  <b>Agent configuration study.</b> We evaluate different agent configurations by varying the underlying LLM/VLM choices. While stronger core models yield higher performance, µA-VLA remains consistently strong across configurations. Notably, even the weakest configuration achieves an <i>Avg. Len.</i> exceeding the prior SoTA (FLOWER: 4.53), demonstrating the robustness of the proposed closed-loop collaboration.
-</p>
-      </div>
-    </div>
-  </section>
+    <section class="section-band results-band" id="results">
+      <div class="section-inner">
+        <div class="section-heading centered">
+          <p class="eyebrow">Simulation Results</p>
+          <h2>State-of-the-art long-horizon performance on CALVIN ABC&rarr;D</h2>
+          <p>
+            Under the official protocol, &micro;A-VLA improves the long-horizon success profile over strong recent baselines and over the &pi;<sub>0.5</sub> backbone alone.
+          </p>
+        </div>
 
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Real-World Experiments</h2>
-      <div class="content has-text-centered">
-        <img src="static/images/real_experinmnets.png" alt="µA-VLA results" style="max-width:100%; height:auto;" />
-      </div>
-      <div class="content has-text-justified">
-<p>
-  <b>Real-world long-horizon deployment.</b> We validate µA-VLA on real-robot long-horizon tasks with varied sequence lengths and orderings. µA-VLA reliably recovers from execution anomalies and continues task progress, showing strong deployability beyond simulation under practical sensory noise and physical uncertainties.
-</p>
-      </div>
-    </div>
-  </section>
+        <div class="metric-strip">
+          <div>
+            <span class="metric">+0.91</span>
+            <span class="metric-label">Avg. Len. over &pi;<sub>0.5</sub></span>
+          </div>
+          <div>
+            <span class="metric">+28.9pp</span>
+            <span class="metric-label">5-step success over &pi;<sub>0.5</sub></span>
+          </div>
+          <div>
+            <span class="metric">+12.3pp</span>
+            <span class="metric-label">5-step success over FLOWER</span>
+          </div>
+        </div>
 
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered"></h2>
-      <div class="content has-text-centered">
-        <img src="static/images/task_seqeunce.jpg" alt="µA-VLA results" style="max-width:100%; height:auto;" />
-      </div>
-      <div class="content has-text-justified">
-<p>
-  <b>Sequence-level analysis.</b> We test long-horizon subtask sequences of length 3–5. In challenging sequences where the backbone policy can deadlock due to unmet preconditions, µA-VLA diagnoses the bottleneck and inserts corrective actions online to complete the full sequence. In contrast, for well-conditioned sequences where preconditions are naturally satisfied by the ordering, the backbone succeeds without intervention, highlighting when online recovery is most beneficial.
-</p>
-      </div>
-    </div>
-  </section>
+        <div class="results-layout">
+          <figure class="paper-figure">
+            <img src="./static/images/sota.jpg" alt="Main CALVIN ABC to D benchmark results for muA-VLA.">
+            <figcaption>&micro;A-VLA reaches an Avg. Len. of 4.76 and a 90.1% 5-step success rate.</figcaption>
+          </figure>
+          <figure class="paper-figure">
+            <img src="./static/images/before_after_barh.png" alt="Representative subtask performance comparison between pi 0.5 and muA-VLA.">
+            <figcaption>Subtask-level gains show how online interventions reduce failure accumulation.</figcaption>
+          </figure>
+        </div>
 
+        <figure class="paper-figure wide compact">
+          <img src="./static/images/agent configuration.jpg" alt="Agent configuration study across different LLM and VLM choices.">
+          <figcaption>
+            The framework remains strong across core model configurations; even the weakest setting surpasses the prior CALVIN ABC&rarr;D state of the art.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
 
-  <!-- Footer / Attribution (keep for CC BY-SA compliance) -->
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content has-text-centered">
+    <section class="section-band real-band" id="real-world">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Real-world Deployment</p>
+          <h2>Recovering from physical bottlenecks during execution</h2>
+          <p>
+            On a 6-DOF Synria Alicia-D robotic arm with RGB and wrist-camera observations, &micro;A-VLA diagnoses long-horizon failures and inserts corrective actions before continuing the original task sequence.
+          </p>
+        </div>
+
+        <figure class="paper-figure wide">
+          <img src="./static/images/real_experinmnets.png" alt="Real-world long-horizon robot experiments with muA-VLA.">
+          <figcaption>
+            In a drawer-closing failure, &micro;A-VLA identifies the physical interference, removes the blocking object, re-executes the failed subtask, and then continues the remaining sequence.
+          </figcaption>
+        </figure>
+
+        <div class="real-grid">
+          <div class="real-copy">
+            <h3>Where recovery matters most</h3>
             <p>
-              Website template borrowed from
-              <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
-              under a
-              <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>.
+              In difficult sequences, the baseline can become stuck because a key precondition is missing, such as attempting to place an object into a drawer that is not open. &micro;A-VLA reasons about the missing condition online and calls the underlying VLA to perform the corrective action first.
+            </p>
+            <p>
+              In well-conditioned orders where preconditions are already satisfied, the backbone may complete the chain without intervention. This helps clarify that &micro;A-VLA is most useful when long-horizon execution creates hidden bottlenecks.
             </p>
           </div>
+          <figure class="paper-figure">
+            <img src="./static/images/task_seqeunce.jpg" alt="Real-world task sequence comparison for long-horizon manipulation.">
+            <figcaption>Sequence-level analysis across different task orders and horizons.</figcaption>
+          </figure>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="section-band citation-band" id="citation">
+      <div class="section-inner narrow">
+        <div class="section-heading centered">
+          <p class="eyebrow">Citation</p>
+          <h2>Cite &micro;A-VLA</h2>
+          <p>The BibTeX entry will be updated with final proceedings metadata when it becomes available.</p>
+        </div>
+
+        <div class="bibtex-block">
+          <button class="copy-button" type="button" data-copy-target="bibtex-code">
+            <span class="icon"><i class="fas fa-copy"></i></span>
+            <span>Copy BibTeX</span>
+          </button>
+          <pre id="bibtex-code">@inproceedings{liu2026muavla,
+  title={{$\mu$A-VLA}: A Multi-Agent Online Self-Healing Framework for Long-Horizon Robotic Manipulation},
+  author={Liu, Ziheng and Wang, You and Wang, Cong and Fu, Jun},
+  booktitle={Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year={2026}
+}</pre>
+          <p class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Website template lineage follows the NeRFies project page under
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    </p>
   </footer>
+
+  <script>
+    const copyButton = document.querySelector("[data-copy-target]");
+    if (copyButton) {
+      copyButton.addEventListener("click", async () => {
+        const target = document.getElementById(copyButton.dataset.copyTarget);
+        const status = document.querySelector(".copy-status");
+        try {
+          await navigator.clipboard.writeText(target.innerText);
+          status.textContent = "BibTeX copied.";
+        } catch (error) {
+          status.textContent = "Copy failed. Please select the BibTeX manually.";
+        }
+      });
+    }
+  </script>
 </body>
 </html>
