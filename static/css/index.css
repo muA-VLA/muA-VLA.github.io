@@ -309,7 +309,7 @@ a:hover {
 }
 
 .summary-grid p,
-pipeline-grid p,
+.pipeline-grid p,
 .real-copy p {
   color: var(--muted);
   line-height: 1.7;
