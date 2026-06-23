@@ -258,7 +258,7 @@ a:hover {
 }
 
 .summary-grid span,
-pipeline-grid span {
+.pipeline-grid span {
   display: inline-flex;
   align-items: center;
   min-height: 28px;
